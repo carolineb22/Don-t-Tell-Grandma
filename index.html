@@ -9,7 +9,6 @@
     <title>Don't Tell Grandma: The word game</title>
     <link rel="stylesheet" href="mainstyle.css" />
     <script src="draggable.js" defer></script>
-
   </head>
 
   <body>
@@ -22,7 +21,7 @@
       </div>
 
       <!-- 🖼️ Grid container where 15×15 boxes get injected -->
-      <div class="innerGrid" id="gridArea"></div>
+      <div class="innerGrid" id="gridArea"></div> <!-- This will be handled by JS now -->
 
       <!-- 🔽 Footer section with scrollable, draggable row -->
       <div class="foot">
@@ -47,35 +46,33 @@
 
     </div><!-- /.container -->
 
-    <!--  
-      📜 Script to generate the 15×15 grid
-      - Wait: placing at end of body ensures #innerGrid exists 
-      - We set display:grid and columns, then loop to append 225 cells
-    -->
+    <!-- 📜 Script to generate the 15×15 grid, updated from before -->
     <script>
     const container = document.getElementById('gridArea');
     container.style.display = 'grid';
     container.style.gridTemplateColumns = 'repeat(15, 1fr)';
-    container.style.gridTemplateRows = 'repeat(15, 1fr)'; // Add this line!
+    container.style.gridTemplateRows = 'repeat(15, 1fr)';
 
-    for (let i = 0; i < 225; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        container.appendChild(cell);
-
-        const style = document.createElement('style');
-        style.textContent = `
-        .cell {
-        border: 1px solid lightgray;
-        background-color: #f9f9f9;
-        aspect-ratio: 1 / 1;
-        min-width: 0;
-        min-height: 0;
-        }
-        `;
-        document.head.appendChild(style);
+    // Add styles for cells dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+    .cell {
+      border: 1px solid black;
+      background-color: white;
+      aspect-ratio: 1 / 1;
+      min-width: 0;
+      min-height: 0;
     }
-      console.log('✅ All 225 cells appended');
+    `;
+    document.head.appendChild(style);
+
+    // Create 15x15 grid
+    for (let i = 0; i < 225; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell'; // Ensure class for styling
+      container.appendChild(cell);
+    }
+    console.log('✅ All 225 cells appended');
     </script>
   </body>
 </html>
