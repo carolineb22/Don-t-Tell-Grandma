@@ -1,0 +1,107 @@
+* {
+    /* outline: 3px solid red; */
+    font-size: 60pt;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+.container {
+    display: grid;
+    grid-template-rows: 5vh 75vh 20vh;
+    grid-template-columns: 10vw 80vw 10vw;
+    aspect-ratio: 1/1;
+}
+
+.header {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 1;
+    background-color: rgb(181, 158, 203);
+}
+
+.innerGrid {
+    
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vmin;
+    height: 70vmin;
+
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    position: relative;
+}
+
+.cell {
+    border: 4px solid rgb(0, 0, 0);
+    background-color: #e3e3e3;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.foot {
+    grid-column: 1/ span 3;
+    grid-row: 3 / span 1;
+}
+
+.scrollable {
+    width: 77vw;
+    overflow-x: auto;
+    height: 15vh;
+}
+
+.draggable-scroll-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #f0f0f0; /* optional: visual separation */
+    padding: 1vh;
+    box-sizing: border-box;
+}
+
+
+.draggable-track {
+    display: flex;
+    gap: 2vh;
+    height: 14vh;
+}
+
+.draggable-box {
+    height: 5vh;
+    display: flex;
+    align-items: center;       /* center letters vertically */
+    justify-content: flex-start; /* pack them to the left, not stretched */
+}
+  
+.letter-box {
+    border: 1px solid black;
+    width: 4.9vw;
+    height: 4.9vh;
+    max-width: 151px;
+    max-height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vh;
+    background-color: white;
+    margin-left: -1.5px;
+    margin-top: -5px;
+}
+  
+
+#gridArea {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    position: relative;
+}

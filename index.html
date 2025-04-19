@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 🔧 Page metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- 📝 Title and main stylesheet -->
+    <title>Don't Tell Grandma: The word game</title>
+    <link rel="stylesheet" href="mainstyle.css" />
+    <script src="draggable.js" defer></script>
+
+  </head>
+
+  <body>
+    <!-- 🚀 Main container for header, grid, and footer -->
+    <div class="container">
+
+      <!-- 📌 Header section -->
+      <div class="header">
+        <h1>Don't tell Grandma!</h1>
+      </div>
+
+      <!-- 🖼️ Grid container where 15×15 boxes get injected -->
+      <div class="innerGrid" id="gridArea"></div>
+
+      <!-- 🔽 Footer section with scrollable, draggable row -->
+      <div class="foot">
+        <div class="scrollable">
+          <div class="draggable-scroll-container">
+            <div class="draggable-track">
+              <!-- 📦 Ten draggable boxes (reorder these via JS) -->
+              <div class="draggable-box" draggable="true">1</div>
+              <div class="draggable-box" draggable="true">2</div>
+              <div class="draggable-box" draggable="true">3</div>
+              <div class="draggable-box" draggable="true">4</div>
+              <div class="draggable-box" draggable="true">5</div>
+              <div class="draggable-box" draggable="true">6</div>
+              <div class="draggable-box" draggable="true">7</div>
+              <div class="draggable-box" draggable="true">8</div>
+              <div class="draggable-box" draggable="true">9</div>
+              <div class="draggable-box" draggable="true">10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <!--  
+      📜 Script to generate the 15×15 grid
+      - Wait: placing at end of body ensures #innerGrid exists 
+      - We set display:grid and columns, then loop to append 225 cells
+    -->
+    <script>
+    const container = document.getElementById('gridArea');
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = 'repeat(15, 1fr)';
+    container.style.gridTemplateRows = 'repeat(15, 1fr)'; // Add this line!
+
+    for (let i = 0; i < 225; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        container.appendChild(cell);
+
+        const style = document.createElement('style');
+        style.textContent = `
+        .cell {
+        border: 1px solid lightgray;
+        background-color: #f9f9f9;
+        aspect-ratio: 1 / 1;
+        min-width: 0;
+        min-height: 0;
+        }
+        `;
+        document.head.appendChild(style);
+    }
+      console.log('✅ All 225 cells appended');
+    </script>
+  </body>
+</html>
